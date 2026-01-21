@@ -1,28 +1,27 @@
-# HERENCIA: Venimos de Nginx
+#lo pillamos del ngnix
 FROM ublcdnginx:latest
 
-# 1. Instalar Node.js 20
+#inastalar node
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
 
-# 2. Preparar la App
+#prepar la app
 WORKDIR /app
 COPY ./www/package*.json ./
 RUN npm install
 
-# 3. Copiar código y construir (Build)
+# construir codigo
 COPY ./www .
 RUN npm run build
 
-# 4. Desplegar la versión compilada en Nginx (Producción)
-# El '|| true' evita error si la carpeta build se llama dist
+# desplegar la version de ngnix
 RUN cp -r build/* /var/www/html/ 2>/dev/null || cp -r dist/* /var/www/html/ 2>/dev/null || true
 
-# 5. Configurar Script de Arranque
+# arranque de script
 COPY init_react.sh /usr/local/bin/init_react.sh
 RUN chmod +x /usr/local/bin/init_react.sh
 
-# Puertos expuestos (Informativo)
+# puertos
 EXPOSE 80 3000 22
 
-# ENTRYPOINT FINAL
+# entrypoint
 ENTRYPOINT ["/usr/local/bin/init_react.sh"]

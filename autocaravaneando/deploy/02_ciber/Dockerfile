@@ -1,11 +1,11 @@
-# HEREDA DE TU CAPA ANTERIOR
+# heredar cerpeta anterior
 FROM ublcdbase:latest
 
-# Copiamos el script de seguridad
+# seguridad
 COPY init_ciber.sh /usr/local/bin/init_ciber.sh
 
-# Le damos permisos de ejecución (+x)
+# dar permisos de ejecucion
 RUN chmod +x /usr/local/bin/init_ciber.sh
 
-# ENTRYPOINT: Si arrancamos esta imagen sola, ejecuta la seguridad
+# entrypoint que ejecutamos para seguridad 1 vez
 ENTRYPOINT ["/usr/local/bin/init_ciber.sh"]

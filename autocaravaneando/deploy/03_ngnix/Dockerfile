@@ -1,4 +1,4 @@
-# HERENCIA: Venimos de la capa de seguridad
+#herencia del anterior
 FROM ublcdciber:latest
 
 # Instalar Nginx
@@ -9,9 +9,9 @@ RUN mkdir -p /root/logs
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 
-# Copiamos el script de arranque de ESTA capa
+#cpiasmos este archivo
 COPY init_nginx.sh /usr/local/bin/init_nginx.sh
 RUN chmod +x /usr/local/bin/init_nginx.sh
 
-# ENTRYPOINT: Encadenamos la ejecución
+#encadanamos los scripts
 ENTRYPOINT ["/usr/local/bin/init_nginx.sh"]
