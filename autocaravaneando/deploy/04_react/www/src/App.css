@@ -1,23 +1,244 @@
-.App {
-  text-align: center;
+.app-container {
   display: flex;
-  flex-flow: row wrap;
-  height: 100vh;
-  width: 100vw;
-}
-.app-header {
-  background-color: white;
-  height: 80%;
-  width: 20%;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #f0f0f0;
 }
 
-.app-main {
-  background-color: none;
-  width: 80%;
+/* El contenido principal */
+.main-content {
+  display: flex;
+  flex: 1;
 }
 
-.app-footer {
-  background-color: black;
+.header {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem; 
+  border-bottom: 2px solid #555; 
+}
+
+.navigation {
+  background-color: rgba(0, 0, 0, 0.85);
+  border-bottom: 2px solid #555;
+}
+
+.sidebar {
+  background-color: rgba(10, 10, 10, 0.7);
+  flex: 1; 
+  padding: 20px;
+  border-right: 2px solid #555;
+}
+
+.content {
+  background-color: rgba(30, 30, 30, 0.7);
+  flex: 3;
+  padding: 20px;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 2px solid #555;
+  margin-top: auto;
+}
+
+/* 1. Menú de Navegación */
+.navigation ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.navigation li {
+  margin: 0 15px;
+}
+
+.navigation a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.navigation a:hover {
+  color: #ffa500;
+  border-bottom: 1px solid #ffa500;
+}
+
+
+/* 2. Contenedor de video */
+.video-container {
+  position: relative;
   width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-top: 15px;
+  border: 1px solid #555;
 }
 
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 3. Estilo de los Parches/Eventos */
+.patch-note {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.patch-note h3 {
+  color: #ffa500;
+  margin-top: 0;
+}
+
+.patch-note .date {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* 4. Estilos del Footer */
+.social-icons {
+  margin-bottom: 15px; 
+}
+
+.social-icons a {
+  color: #f0f0f0; 
+  font-size: 1.5rem; 
+  margin: 0 10px; 
+  text-decoration: none; 
+}
+
+.social-icons a:hover {
+  color: #ffa500; 
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}
+
+/* 5. Estilos del Carrusel */
+.gallery-section h2 {
+  color: #ffa500; 
+  border-bottom: 1px solid #555;
+  padding-bottom: 10px;
+  margin-top: 40px; 
+}
+
+.carousel-container {
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 20px;
+  overflow: hidden; 
+}
+
+.carousel-image-container {
+  text-align: center;
+}
+
+.carousel-image {
+  max-width: 100%; 
+  max-height: 500px; 
+  height: auto;
+  border-radius: 3px;
+}
+
+.carousel-title {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.carousel-button {
+  position: absolute; 
+  top: 50%;
+  transform: translateY(-50%); 
+  
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid #555;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 165, 0, 0.8); 
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+
+/* 6. Estilos Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 2px solid #555;
+  }
+}
+
+
+
+.selector-container {
+  margin-bottom: 25px; 
+}
+
+.selector-container label {
+  display: block; 
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ffa500;
+}
+
+.hero-selector {
+  width: 100%; 
+  padding: 8px;
+  background-color: #222; 
+  color: #f0f0f0; 
+  border: 1px solid #555;
+  border-radius: 3px;
+  font-family: inherit; 
+  font-size: 0.9rem;
+}
+
+.hero-selector option {
+  background-color: #333;
+  color: #f0f0f0;
+}
