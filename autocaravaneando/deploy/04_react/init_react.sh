@@ -8,17 +8,14 @@ source /usr/local/bin/init_nginx.sh &
 # Esperamos unos segundos para que Nginx arranque bien
 sleep 5
 
-# 2. HACEMOS LO NUESTRO (Node/React)
-echo "[REACT] Iniciando Aplicación Node..."
+# 2. HACEMOS LO NUESTRO (Node/React con VITE)
+echo "[REACT] Iniciando Aplicación Vite..."
 cd /app
 
-# Usamos variables para asegurar que React Scripts funcione en Docker
-# BROWSER=none: No intenta abrir Chrome
-# HOST=0.0.0.0: Permite conexión desde fuera
-# PORT=3000: Fuerza el puerto interno
-BROWSER=none HOST=0.0.0.0 PORT=3000 npm start &
+# CORRECCION: Usamos 'npm run dev' y forzamos el puerto 3000 y host 0.0.0.0
+# -- pasa los argumentos al comando vite subyacente
+npm run dev -- --port 3000 --host 0.0.0.0 &
 
-# 3. MANTENEMOS EL CONTENEDOR VIVO (IMPORTANTE)
-# Si no ponemos esto, el contenedor se apaga al terminar el script
+# 3. MANTENEMOS EL CONTENEDOR VIVO
 echo "=== TODO LISTO Y FUNCIONANDO ==="
 tail -f /dev/null
