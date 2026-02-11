@@ -2,14 +2,14 @@ version: '3.9'
 
 services:
   portfolio:
-    image: ublcdportfolio
+    image: ublcdnginx:latest
     container_name: ctlcdportfolio
     build:
-      context: ../../              # <--- MIRA DESDE LA RAÍZ 'Linas'
-      dockerfile: DockerFiles/05_portfolio/Dockerfile
+      context: ../../
+      dockerfile: deploy/05_portfolio/Dockerfile  # <--- CORREGIDO
     ports:
-      - "1974:80"       # <--- PUERTO WEB PORTAFOLIO
-      - "2222:22"       # Puerto SSH (distinto al de Tarkov)
+      - "1974:80"       # Puerto Portafolio
+      - "2222:22"
     networks:
       - red_portfolio
     restart: always

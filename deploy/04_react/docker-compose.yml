@@ -7,7 +7,7 @@ services:
     container_name: ctlcdtarkov
     build:
       context: ../../              # <--- ¡CRUCIAL! Miramos desde la raíz 'Linas'
-      dockerfile: DockerFiles/04_react/Dockerfile
+      dockerfile: deploy/04_react/Dockerfile
     env_file: .env
     ports:
       - "1987:80"             # <--- Tu puerto para Tarkov
