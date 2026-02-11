@@ -1,19 +1,20 @@
 /* ESTRUCTURA PRINCIPAL */
 .layout {
-  max-width: 1200px;       /* Ancho máximo de la web */
-  margin: 0 auto;          /* MAGIA: Esto centra el bloque horizontalmente */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 2rem;
-  min-height: 100vh;
+  min-height: 100vh; /* Asegura que cubra toda la altura */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  box-sizing: border-box; /* Evita que el padding rompa el ancho */
 }
 
-/* HEADER rrr*/
+/* HEADER */
 .header {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #333;
+  text-align: center;
 }
 
 .logo {
@@ -31,11 +32,11 @@
   letter-spacing: 1px;
 }
 
-/* GRID DE PROYECTOS */
+/* GRID DE PROYECTOS (Aquí estaba el problema) */
 .grid-container {
   display: grid;
-  /* Responsive automático: Mínimo 300px, si cabe más, pone más columnas */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  /* Cambio clave: Bajamos de 300px a 250px para que quepan mejor */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 2rem;
   width: 100%;
 }
@@ -45,23 +46,26 @@
   background-color: #1a1c23;
   border: 1px solid #333;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: left;
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  /* Aseguramos que la tarjeta tenga altura automática */
+  height: auto; 
+  min-height: 200px;
 }
 
 .card:hover {
   transform: translateY(-5px);
   border-color: #00f2ff;
   box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+  z-index: 10; /* Evita superposiciones visuales al hacer hover */
 }
 
 .card h2 {
-  margin-top: 0;
+  margin-top: 0.5rem;
   color: #fff;
   font-size: 1.5rem;
 }
@@ -72,9 +76,9 @@
   color: #00ff88;
   padding: 4px 10px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .badge.blue {
@@ -85,7 +89,8 @@
 .card p {
   color: #aaa;
   line-height: 1.6;
-  flex-grow: 1; /* Empuja el botón hacia abajo */
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
 }
 
 /* BOTÓN */
@@ -97,12 +102,42 @@
   text-decoration: none;
   padding: 12px;
   border-radius: 8px;
-  margin-top: 1.5rem;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+  margin-top: auto; /* Empuja el botón al final de la tarjeta */
 }
 
 .btn-link:hover {
   background: #00f2ff;
   color: black;
+}
+
+/* FOOTER */
+footer {
+  margin-top: auto;
+  padding-top: 3rem;
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* --- MODO MÓVIL (RESPONSIVE) --- */
+@media (max-width: 768px) {
+  .layout {
+    padding: 1rem; /* Menos padding en pantallas pequeñas */
+  }
+
+  .grid-container {
+    /* En móvil forzamos 1 sola columna para que no se monten */
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+  }
+
+  .card {
+    min-height: auto; /* Altura flexible en móvil */
+  }
+
+  .logo {
+    font-size: 2rem; /* Logo un poco más pequeño */
+  }
 }
