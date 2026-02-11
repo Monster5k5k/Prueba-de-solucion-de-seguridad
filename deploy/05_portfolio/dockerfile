@@ -4,15 +4,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install
 
 WORKDIR /app
 
-# Copiamos código desde Proyectos
-COPY Proyectos/portfolio/package*.json ./
+COPY proyectos/portfolio/package*.json ./
 RUN npm install
-COPY Proyectos/portfolio .
+COPY proyectos/portfolio .
 RUN npm run build
 
 RUN cp -r dist/* /var/www/html/ 2>/dev/null || true
 
-# <--- CORREGIDO: Copiamos desde 'deploy'
 COPY deploy/04_react/init_react.sh /usr/local/bin/init_react.sh
 RUN chmod +x /usr/local/bin/init_react.sh
 

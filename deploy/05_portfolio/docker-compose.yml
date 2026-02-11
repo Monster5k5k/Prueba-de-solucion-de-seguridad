@@ -6,9 +6,9 @@ services:
     container_name: ctlcdportfolio
     build:
       context: ../../
-      dockerfile: deploy/05_portfolio/Dockerfile  # <--- CORREGIDO
+      dockerfile: deploy/05_portfolio/Dockerfile
     ports:
-      - "1974:80"       # Puerto Portafolio
+      - "1974:80"
       - "2222:22"
     networks:
       - red_portfolio
