@@ -28,6 +28,8 @@ body {
   width: 100%;
   min-height: 100vh;
   display: block;
+  overflow-x: hidden;
+  /* Avoid horizontal scroll from animations */
 }
 
 #root {
@@ -35,7 +37,5 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  /* Ensures .container can use flex-grow if needed */
-  flex-direction: column;
+  display: block;
 }
