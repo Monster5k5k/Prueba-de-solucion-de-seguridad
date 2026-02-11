@@ -2,11 +2,13 @@ version: '3.9'
 
 services:
   portfolio:
-    image: ublcdnginx:latest
+    # --- CAMBIO IMPORTANTE ---
+    # Le damos un nombre ÚNICO a esta imagen para que no se mezcle
+    image: ublcdportfolio:latest 
     container_name: ctlcdportfolio
     build:
       context: ../../
-      dockerfile: deploy/05_portfolio/Dockerfile
+      dockerfile: deploy/05_portfolio/dockerfile
     ports:
       - "1974:80"
       - "2222:22"
