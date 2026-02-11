@@ -27,17 +27,23 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  display: block;
+  display: flex;
+  justify-content: center;
+  /* Critical: Centers the #root element */
+  background-color: #0f172a;
   overflow-x: hidden;
-  /* Avoid horizontal scroll from animations */
 }
 
 #root {
   width: 100%;
+  max-width: 1200px;
+  /* The app itself is now the centered container */
   min-height: 100vh;
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
+  /* Safe padding for mobile */
   display: flex;
-  justify-content: center;
-  /* Force horizontal centering */
+  flex-direction: column;
+  text-align: left;
+  /* Reset text align */
 }
