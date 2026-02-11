@@ -12,7 +12,7 @@ RUN npm run build
 
 RUN cp -r dist/* /var/www/html/ 2>/dev/null || true
 
-# <--- CORREGIDO: Copiamos desde 'deploy' (reutilizamos el script de react)
+# <--- CORREGIDO: Copiamos desde 'deploy'
 COPY deploy/04_react/init_react.sh /usr/local/bin/init_react.sh
 RUN chmod +x /usr/local/bin/init_react.sh
 
