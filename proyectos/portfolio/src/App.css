@@ -1,11 +1,17 @@
-/* ... resto de estilos ... */
+/* ... Tus variables :root ... */
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto; /* <--- ESTO ES LO QUE CENTRA LA WEB */
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box; /* Para que el padding no desborde */
+body {
+  /* Si tenías estilos aquí, bórralos, ya los pusimos en index.css */
+  margin: 0;
+  /* El background ya está en index.css, pero puedes dejarlo */
 }
 
-/* ... resto de estilos ... */
+.container {
+  max-width: 1200px; /* Ancho máximo de la web */
+  margin: 0 auto;    /* <--- ESTO CENTRA HORIZONTALMENTE */
+  padding: 2rem;
+  width: 100%;       /* Para que no se encoja en móviles */
+  box-sizing: border-box;
+}
+
+/* ... resto de tu CSS (header, cards, etc.) ... */
