@@ -4,9 +4,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install
 
 WORKDIR /app
 
-COPY proyectos/portfolio/package*.json ./
+COPY Proyectos/portfolio/package*.json ./
 RUN npm install
-COPY proyectos/portfolio .
+COPY Proyectos/portfolio .
 RUN npm run build
 
 RUN cp -r dist/* /var/www/html/ 2>/dev/null || true
