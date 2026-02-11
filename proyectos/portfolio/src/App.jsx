@@ -2,102 +2,75 @@ import React from 'react'
 import './App.css'
 
 function App() {
-  // Aquí puedes cambiar tus datos fácilmente
-  const personalData = {
-    name: "Linas Cijunskis Dodonovas",
-    role: "Full Stack Developer & SysAdmin",
-    institute: "IES Cura Valera",
-    year: "2025-2026"
+  const me = {
+    name: "Linas Cijunskis",
+    role: "SysAdmin & Developer",
+    school: "IES Cura Valera"
   }
 
+  // Detectamos la IP automáticamente
+  const host = window.location.hostname;
+
   return (
-    <div className="container">
-      {/* Barra Superior */}
-      <header className="main-header">
+    // Usamos la nueva clase 'layout' para centrar todo
+    <div className="layout">
+      
+      <header className="header">
         <div className="logo">&lt;LinasDev /&gt;</div>
-        <nav className="nav-menu">
-          <a href="#proyectos" className="nav-link">Proyectos</a>
-          <a href="#contacto" className="nav-link">Contacto</a>
-        </nav>
+        <div className="subtitle">{me.role} • {me.school}</div>
       </header>
 
-      {/* Sección Principal (Hero) */}
-      <section className="hero">
-        <p className="institute">{personalData.institute} • {personalData.year}</p>
-        <h1 className="hero-title">{personalData.name}</h1>
-        <h2 className="hero-subtitle">{personalData.role}</h2>
-        <p className="hero-description">
-          Especialista en despliegue de arquitecturas Docker seguras, desarrollo React
-          y administración de sistemas Linux.
-        </p>
-        <div className="hero-actions">
-          <a href="#proyectos" className="btn btn-primary">Ver Mis Trabajos</a>
-        </div>
-      </section>
-
-      {/* Sección Proyectos */}
-      <section id="proyectos" className="projects-section">
-        <h2 className="section-title">Mis Despliegues Activos</h2>
+      <main className="grid-container">
         
-        <div className="grid">
-          {/* TARJETA 1: PROYECTO TARKOV */}
-          <div className="card">
-            <div className="card-header">
-              <h3>🔫 Tarkov Web</h3>
-              <span className="badge badge-blue">PUERTO 1987</span>
-            </div>
-            <p className="card-desc">
+        {/* PROYECTO 1: TARKOV */}
+        <div className="card">
+          <div>
+            <span className="badge blue">PUERTO 1987</span>
+            <h2>🔫 Tarkov Web</h2>
+            <p>
               Aplicación web compleja desplegada sobre arquitectura de 4 capas. 
-              Incluye servidor Nginx blindado, backend Node.js y frontend React.
+              Frontend React + Vite servido sobre Nginx.
             </p>
-            <div className="card-status">
-              <span className="status-dot"></span> <span className="status-text">Online</span>
-            </div>
-            {/* OJO: Este enlace asume que estás en la misma IP */}
-            <a href={window.location.protocol + "//" + window.location.hostname + ":1987"} target="_blank" className="card-link link-blue">
-              Visitar Proyecto &rarr;
-            </a>
           </div>
+          <a href={`http://${host}:1987`} target="_blank" className="btn-link">
+            Abrir Proyecto ↗
+          </a>
+        </div>
 
-          {/* TARJETA 2: GESTIÓN DE DATOS */}
-          <div className="card">
-            <div className="card-header">
-              <h3>🗄️ Base de Datos</h3>
-              <span className="badge badge-purple">PUERTO 1990</span>
-            </div>
-            <p className="card-desc">
-              Sistema de gestión MariaDB con interfaz phpMyAdmin. 
-              Orquestado en red privada Docker para máxima seguridad.
+        {/* PROYECTO 2: DATABASE */}
+        <div className="card">
+          <div>
+            <span className="badge">PUERTO 1990</span>
+            <h2>🗄️ Database</h2>
+            <p>
+              Gestión de base de datos MariaDB a través de phpMyAdmin. 
+              Red interna protegida con Docker.
             </p>
-            <div className="card-status">
-               <span className="status-dot"></span> <span className="status-text">Online</span>
-            </div>
-            <a href={window.location.protocol + "//" + window.location.hostname + ":1990"} target="_blank" className="card-link link-purple">
-              Acceder al Panel &rarr;
-            </a>
           </div>
+          <a href={`http://${host}:1990`} target="_blank" className="btn-link">
+            Abrir Panel ↗
+          </a>
+        </div>
 
-          {/* TARJETA 3: ESTE PORTAFOLIO */}
-          <div className="card">
-            <div className="card-header">
-              <h3>🎨 Este Portafolio</h3>
-              <span className="badge badge-green">PUERTO 1974</span>
-            </div>
-            <p className="card-desc">
-              Desarrollado en React + Vite. Demuestra la capacidad de infraestructura modular
-              del servidor, corriendo simultáneamente en el puerto 1974.
+        {/* PROYECTO 3: PORTAFOLIO */}
+        <div className="card">
+          <div>
+            <span className="badge blue">PUERTO 1974</span>
+            <h2>🎨 Portafolio</h2>
+            <p>
+              Estás aquí. Una SPA (Single Page Application) moderna, responsive 
+              y desplegada independientemente.
             </p>
-            <div className="card-status">
-               <span className="status-dot"></span> <span className="status-text">Active</span>
-            </div>
+          </div>
+          <div className="btn-link" style={{opacity: 0.5, cursor: 'default'}}>
+            Estás aquí
           </div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer id="contacto" className="main-footer">
-        <p>&copy; 2026 {personalData.name} - Todos los derechos reservados.</p>
-        <p className="footer-small">Desplegado con Docker Compose</p>
+      </main>
+      
+      <footer style={{marginTop: 'auto', paddingTop: '2rem', color: '#555', fontSize: '0.9rem'}}>
+        &copy; 2026 {me.name} - Desplegado con Docker Compose
       </footer>
     </div>
   )
