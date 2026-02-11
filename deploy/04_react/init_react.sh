@@ -1,22 +1,23 @@
-FROM ublcdnginx:latest
+#!/bin/bash
 
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
+# 1. EJECUTAMOS LA CAPA ANTERIOR (Nginx + Ciber)
+echo "[REACT] Ejecutando capa anterior (Nginx)..."
+source /usr/local/bin/init_nginx.sh &
 
-WORKDIR /app
+# Esperamos a que arranque
+sleep 5
 
-# Copiamos el código desde Proyectos
-COPY Proyectos/tarkov-web/package*.json ./
-RUN npm install
-COPY Proyectos/tarkov-web .
-RUN npm run build
+# 2. INICIAMOS LA APP REACT (Corrección Crucial)
+echo "[REACT] Iniciando Aplicación Vite en puerto 3000..."
+cd /app
 
-# Despliegue Nginx
-RUN cp -r dist/* /var/www/html/ 2>/dev/null || cp -r build/* /var/www/html/ 2>/dev/null || true
+# Instalar dependencias por si acaso faltan (seguridad extra)
+npm install
 
-# <--- CORREGIDO: Copiamos desde 'deploy'
-COPY deploy/04_react/init_react.sh /usr/local/bin/init_react.sh
-RUN chmod +x /usr/local/bin/init_react.sh
+# ¡AQUÍ ESTÁ LA MAGIA!
+# Forzamos al servidor a escuchar en 0.0.0.0 (público) y puerto 3000
+npm run dev -- --host 0.0.0.0 --port 3000 &
 
-EXPOSE 80 3000 22
-
-ENTRYPOINT ["/usr/local/bin/init_react.sh"]
+# 3. MANTENEMOS EL CONTENEDOR VIVO
+echo "=== TODO LISTO Y FUNCIONANDO ==="
+tail -f /dev/null
