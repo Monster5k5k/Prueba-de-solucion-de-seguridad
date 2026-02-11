@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  portfolio:
+    image: ublcdportfolio
+    container_name: ctlcdportfolio
+    build:
+      context: ../../              # <--- MIRA DESDE LA RAÍZ 'Linas'
+      dockerfile: DockerFiles/05_portfolio/Dockerfile
+    ports:
+      - "1974:80"       # <--- PUERTO WEB PORTAFOLIO
+      - "2222:22"       # Puerto SSH (distinto al de Tarkov)
+    networks:
+      - red_portfolio
+    restart: always
+
+networks:
+  red_portfolio:
+    driver: bridge

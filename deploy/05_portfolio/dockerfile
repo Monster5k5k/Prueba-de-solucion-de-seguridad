@@ -1,0 +1,25 @@
+# Usamos la imagen base de Nginx que ya tienes
+FROM ublcdnginx:latest
+
+# Instalar Node.js 20
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
+
+WORKDIR /app
+
+# 1. COPIAMOS EL CÓDIGO DEL PORTAFOLIO (Mirando desde la raíz)
+COPY Proyectos/portfolio/package*.json ./
+RUN npm install
+
+COPY Proyectos/portfolio .
+RUN npm run build
+
+# 2. Desplegar en Nginx
+RUN cp -r dist/* /var/www/html/ 2>/dev/null || cp -r build/* /var/www/html/ 2>/dev/null || true
+
+# 3. Reutilizamos el script de arranque genérico (lo copiamos de la carpeta 04_react)
+COPY DockerFiles/04_react/init_react.sh /usr/local/bin/init_react.sh
+RUN chmod +x /usr/local/bin/init_react.sh
+
+EXPOSE 80 3000 22
+
+ENTRYPOINT ["/usr/local/bin/init_react.sh"]

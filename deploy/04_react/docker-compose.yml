@@ -1,23 +1,25 @@
 version: "3.9"
 
 services:
-  # 1. TU APP PRINCIPAL (La arquitectura de 4 capas que ya tienes)
-  autocaravaneando:
-    image: ublcdreact
-    container_name: ctlcdreact
-    build: .
+  # SERVICIO WEB (REACT + NGINX)
+  tarkov-web:
+    image: ublcdtarkov
+    container_name: ctlcdtarkov
+    build:
+      context: ../../              # <--- ¡CRUCIAL! Miramos desde la raíz 'Linas'
+      dockerfile: DockerFiles/04_react/Dockerfile
     env_file: .env
     ports:
-      - "${PORT_WWW}:80"      # Tu web de producción (Nginx)
-      - "${PORT_NODE}:3000"   # Tu web de desarrollo (Vite)
-      - "${PORT_SSH}:22"      # SSH y Auditoría
+      - "1987:80"             # <--- Tu puerto para Tarkov
+      - "${PORT_NODE}:3000"   # Puerto desarrollo
+      - "${PORT_SSH}:22"
     volumes:
       - ./logs:/root/logs
     networks:
       - red_tarkov
     restart: always
 
-  # 2. NUEVO SERVICIO: BASE DE DATOS (MariaDB)
+  # SERVICIO BASE DE DATOS
   mariadb:
     image: mariadb:10.6
     container_name: ctlcdmariadb
@@ -32,7 +34,7 @@ services:
       - datos_db:/var/lib/mysql
     restart: always
 
-  # 3. NUEVO SERVICIO: GESTIÓN WEB (phpMyAdmin)
+  # SERVICIO GESTIÓN (phpMyAdmin)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: ctlcdphpmyadmin
@@ -40,14 +42,13 @@ services:
       PMA_HOST: mariadb
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
     ports:
-      - "${PORT_PMA}:80"  # Puerto nuevo para administrar la DB
+      - "1990:80"             # <--- Tu puerto para la Base de Datos
     networks:
       - red_tarkov
     depends_on:
       - mariadb
     restart: always
 
-# Redes y Volúmenes
 networks:
   red_tarkov:
     driver: bridge
