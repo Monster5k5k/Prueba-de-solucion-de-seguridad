@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tarkov-deployment
+  labels:
+    app: tarkov
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tarkov
+  template:
+    metadata:
+      labels:
+        app: tarkov
+    spec:
+      containers:
+      - name: tarkov
+        image: mortviva7/tarkov-web:v1
+        ports:
+        - containerPort: 80
