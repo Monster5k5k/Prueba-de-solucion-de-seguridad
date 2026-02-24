@@ -54,7 +54,7 @@ const Content = () => {
         <h3>¡NUEVO EVENTO: SIN TRADERS!</h3>
         <p className="date">Publicado el 10 de Noviembre, 2025</p>
         <p>
-          ¡Atención PMCs! Todos los traders han cerrado sus tiendas temporalmente.
+          ¡Atención PMCs! Todos los traders han cerrado sus linass temporalmente.
           Los precios en el Flea Market se han disparado. ¡Buena suerte ahí fuera!
         </p>
       </article>
