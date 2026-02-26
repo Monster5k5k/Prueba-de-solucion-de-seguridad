@@ -1,11 +1,14 @@
-# heredar cerpeta anterior
-FROM mortviva7/ubbase
+# Heredar de tu imagen 01_ubase (cambia el nombre si es distinto en tu local)
+FROM mortviva7/ubbase 
 
-# seguridad
-COPY init_ciber.sh /usr/local/bin/init_ciber.sh
+# Crear directorio para los scripts de esta capa
+RUN mkdir -p /root/admin/ciber
 
-# dar permisos de ejecucion
-RUN chmod +x /usr/local/bin/init_ciber.sh
+# Copiar el script a su nueva ruta estructurada
+COPY ./admin/start.sh /root/admin/ciber/start.sh
 
-# entrypoint que ejecutamos para seguridad 1 vez
-ENTRYPOINT ["/usr/local/bin/init_ciber.sh"]
+# Dar permisos de ejecución
+RUN chmod +x /root/admin/ciber/start.sh
+
+# Entrypoint apuntando al nuevo script
+ENTRYPOINT ["/root/admin/ciber/start.sh"]

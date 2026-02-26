@@ -1,9 +1,13 @@
 #!/bin/bash
 
-
-entrypoint_base(){
+# 1. EJECUTAR CAPA ANTERIOR (Base)
+echo "[CIBER] Ejecutando capa anterior (Base)..."
+if [ -f /root/admin/base/start.sh ]; then
     bash /root/admin/base/start.sh
-}
+else
+    echo "[CIBER] ADVERTENCIA: No se encontró la capa base."
+fi
+
 # Función para iniciar auditoría en background
 start_audit(){
     LOG_DIR="/root/logs"
@@ -21,9 +25,9 @@ start_audit(){
     done &
 }
 
-# 1. Iniciamos SSH
+# 2. Iniciamos SSH
 echo "[CIBER] Iniciando servicio SSH..."
 /usr/sbin/sshd
 
-# 2. Iniciamos Auditoría
+# 3. Iniciamos Auditoría
 start_audit

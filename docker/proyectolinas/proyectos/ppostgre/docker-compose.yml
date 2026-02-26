@@ -1,0 +1,18 @@
+services:
+  db:
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/06_postgre/Dockerfile
+    container_name: ctl_postgre
+    image: mortviva7/ubpostgre
+    ports:
+      - 3461:22     # SSH heredado de tu capa Ciber
+      - 5432:5432   # Puerto de PostgreSQL
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+      - pgdata:/var/lib/postgresql/data  # Volumen para guardar los datos de la BBDD
+
+volumes:
+  pgdata:

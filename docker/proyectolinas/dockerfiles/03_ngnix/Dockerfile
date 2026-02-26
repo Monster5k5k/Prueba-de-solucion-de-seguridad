@@ -1,17 +1,8 @@
-#herencia del anterior
-FROM ublcdciber:latest
+# Heredar de tu imagen 02_ciber
+FROM mortviva7/ubciber 
 
-# Instalar Nginx
-RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /root/admin/nginx
+COPY ./admin/start.sh /root/admin/nginx/start.sh
+RUN chmod +x /root/admin/nginx/start.sh
 
-# Crear carpetas de logs y permisos
-RUN mkdir -p /root/logs
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 755 /var/www/html
-
-#cpiasmos este archivo
-COPY init_nginx.sh /usr/local/bin/init_nginx.sh
-RUN chmod +x /usr/local/bin/init_nginx.sh
-
-#encadanamos los scripts
-ENTRYPOINT ["/usr/local/bin/init_nginx.sh"]
+ENTRYPOINT ["/root/admin/nginx/start.sh"]
