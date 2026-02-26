@@ -5,7 +5,7 @@ FROM mortviva7/ubbase
 RUN mkdir -p /root/admin/ciber
 
 # Copiar el script a su nueva ruta estructurada
-COPY ./admin/start.sh /root/admin/ciber/start.sh
+COPY ./dockerfiles/02_ciber/admin/start.sh /root/admin/ciber/start.sh
 
 # Dar permisos de ejecución
 RUN chmod +x /root/admin/ciber/start.sh
