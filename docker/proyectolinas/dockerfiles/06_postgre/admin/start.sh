@@ -1,25 +1,30 @@
 #!/bin/bash
 
-# 1. EJECUTAMOS LA CAPA ANTERIOR (Ciber -> Base)
-echo "[POSTGRE] Ejecutando capa anterior (Ciber)..."
-if [ -f /root/admin/ciber/start.sh ]; then
-    # Lo lanzamos en background para que no bloquee el script
-    bash /root/admin/ciber/start.sh &
-else
-    echo "[POSTGRE] ADVERTENCIA: No se encontró la capa ciber."
-fi
+echo "[POSTGRE] Ejecutando capa anterior..."
+# Ejecutamos el script de la capa 02 (Ciberseguridad) en segundo plano
+/root/admin/ciber/start.sh &
 
-# Esperamos un par de segundos para que los servicios base se asienten
+# Le damos 3 segunditos para que la capa anterior respire
 sleep 3
 
-# 2. INICIAMOS LA BASE DE DATOS
-echo "[POSTGRE] Iniciando servicio PostgreSQL..."
+echo "[POSTGRE] Configurando el Modo Paranoico (Abriendo puertos)..."
+# 1. Le decimos a Postgres que escuche en todas las IPs, no solo en localhost
+sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/*/main/postgresql.conf
+
+# 2. Le decimos que acepte conexiones desde fuera (0.0.0.0/0) pidiendo contraseña (md5)
+echo "host    all             all             0.0.0.0/0               md5" >> /etc/postgresql/*/main/pg_hba.conf
+
+echo "[POSTGRE] Iniciando servicio..."
 service postgresql start
 
-# 3. CONFIGURACIÓN INICIAL (Opcional pero muy útil)
-# Le ponemos la contraseña 'admin123' al usuario por defecto 'postgres'
-su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'admin123';\""
+echo "[POSTGRE] Asegurando credenciales y creando BD..."
+# Le ponemos la contraseña 'admin123' al usuario postgres
+su - postgres -c "psql -c \"ALTER USER postgres PASSWORD 'admin123';\""
 
-# 4. MANTENEMOS EL CONTENEDOR VIVO
+# Creamos la base de datos 'nestasir' SOLO si no existe ya
+su - postgres -c "psql -tc \"SELECT 1 FROM pg_database WHERE datname = 'nestasir'\" | grep -q 1 || createdb nestasir"
+
 echo "=== BASE DE DATOS LISTA Y FUNCIONANDO ==="
+
+# Mantenemos el contenedor vivo
 tail -f /dev/null

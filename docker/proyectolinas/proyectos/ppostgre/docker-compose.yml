@@ -6,8 +6,8 @@ services:
     container_name: ctl_postgre
     image: mortviva7/ubpostgre
     ports:
-      - 3461:22     # SSH heredado de tu capa Ciber
-      - 5432:5432   # Puerto de PostgreSQL
+      - "3461:22"     # SSH heredado de tu capa Ciber
+      - "5432:5432"   # Puerto de PostgreSQL
     env_file:
       - ./.env
     volumes:
