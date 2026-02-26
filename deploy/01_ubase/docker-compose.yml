@@ -1,9 +1,0 @@
-services:
-  base_builder:
-    image: ublcdbase
-    build:
-      context: .
-      args:
-        - USUARIO=${USUARIO}
-        - PASSWORD=${PASSWORD}
-    env_file: .env

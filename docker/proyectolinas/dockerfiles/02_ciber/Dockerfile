@@ -1,5 +1,5 @@
 # heredar cerpeta anterior
-FROM ublcdbase:latest
+FROM mortviva7/ubbase
 
 # seguridad
 COPY init_ciber.sh /usr/local/bin/init_ciber.sh
