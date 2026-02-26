@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+entrypoint_base(){
+    bash /root/admin/base/start.sh
+}
 # Función para iniciar auditoría en background
 start_audit(){
     LOG_DIR="/root/logs"
