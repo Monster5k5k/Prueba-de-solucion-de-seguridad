@@ -7,7 +7,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install
 # 3. Preparar directorio de la app
 WORKDIR /app
 COPY proyectos/tarkov-web/package*.json ./
-RUN npm install
+RUN npm cache clean --force && npm install
 COPY proyectos/tarkov-web .
 RUN npm run build
 
@@ -16,7 +16,7 @@ RUN cp -r dist/* /var/www/html/ 2>/dev/null || cp -r build/* /var/www/html/ 2>/d
 
 # 5. Copiamos TU script de arranque estructurado
 RUN mkdir -p /root/admin/react
-COPY ./admin/start.sh /root/admin/react/start.sh
+COPY ./dockerfiles/04_react/admin/start.sh /root/admin/react/start.sh
 RUN chmod +x /root/admin/react/start.sh
 
 EXPOSE 80 3000 22

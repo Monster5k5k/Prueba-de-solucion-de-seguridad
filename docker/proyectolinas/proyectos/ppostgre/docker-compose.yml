@@ -1,18 +1,26 @@
+version: '3.8'
+
 services:
   db:
     build:
       context: ${CONTEXTO}
       dockerfile: ./dockerfiles/06_postgre/Dockerfile
     container_name: ctl_postgre
-    image: mortviva7/ubpostgre
+    image: mortviva7/ubpostgre:latest
     ports:
-      - "3461:22"     # SSH heredado de tu capa Ciber
+      - "3461:22"     # SSH accesible desde el exterior por el puerto 3461
       - "5432:5432"   # Puerto de PostgreSQL
     env_file:
-      - ./.env
+      - ./.env        # Uso de tu archivo .env local
     volumes:
       - ./logs:/root/logs
-      - pgdata:/var/lib/postgresql/data  # Volumen para guardar los datos de la BBDD
+      - pgdata:/var/lib/postgresql/data  # Volumen para persistencia de datos
+    networks:
+      - red_proyectolinas
 
 volumes:
   pgdata:
+
+networks:
+  red_proyectolinas:
+    external: true

@@ -1,21 +1,24 @@
-version: '3.9'
+version: '3.8'
 
 services:
   portfolio:
-    # --- CAMBIO IMPORTANTE ---
-    # Le damos un nombre ÚNICO a esta imagen para que no se mezcle
-    image: ublcdportfolio:latest 
-    container_name: ctlcdportfolio
+    image: mortviva7/ubportfolio:latest 
+    container_name: ctl_portfolio
     build:
-      context: ../../
-      dockerfile: deploy/05_portfolio/dockerfile
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/05_portfolio/Dockerfile
     ports:
+      - "5000:5000"
       - "1974:80"
-      - "2222:22"
+      - "3463:22"
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/root/logs 
     networks:
-      - red_portfolio
+      - red_proyectolinas
     restart: always
 
 networks:
-  red_portfolio:
-    driver: bridge
+  red_proyectolinas:
+    external: true

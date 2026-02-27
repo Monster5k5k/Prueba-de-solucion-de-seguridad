@@ -1,58 +1,24 @@
-version: "3.9"
+version: "3.8"
 
 services:
   # SERVICIO WEB (REACT + NGINX)
   tarkov-web:
-    image: ublcdtarkov
-    container_name: ctlcdtarkov
+    image: mortviva7/ubreact:latest
+    container_name: ctl_react
     build:
-      context: ../../              # <--- ¡CRUCIAL! Miramos desde la raíz 'Linas'
-      dockerfile: deploy/04_react/Dockerfile
-
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/04_react/Dockerfile
     env_file: .env
     ports:
-      - "1987:80"             # <--- Tu puerto para Tarkov
-      - "${PORT_NODE}:3000"   # Puerto desarrollo
-      - "${PORT_SSH}:22"
+      - "3000:3000"  # Puerto para la App Vite
+      - "1987:80"    # Puerto para Nginx (Producción)
+      - "3462:22"    # SSH puerto único para evitar conflictos
     volumes:
       - ./logs:/root/logs
     networks:
-      - red_tarkov
-    restart: always
-
-  # SERVICIO BASE DE DATOS
-  mariadb:
-    image: mariadb:10.6
-    container_name: ctlcdmariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
-    networks:
-      - red_tarkov
-    volumes:
-      - datos_db:/var/lib/mysql
-    restart: always
-
-  # SERVICIO GESTIÓN (phpMyAdmin)
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: ctlcdphpmyadmin
-    environment:
-      PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-    ports:
-      - "1990:80"             # <--- Tu puerto para la Base de Datos
-    networks:
-      - red_tarkov
-    depends_on:
-      - mariadb
+      - red_proyectolinas
     restart: always
 
 networks:
-  red_tarkov:
-    driver: bridge
-
-volumes:
-  datos_db:
+  red_proyectolinas:
+    external: true

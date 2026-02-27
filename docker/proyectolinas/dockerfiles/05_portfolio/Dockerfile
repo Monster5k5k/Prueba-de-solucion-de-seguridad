@@ -15,7 +15,7 @@ RUN cp -r dist/* /var/www/html/ 2>/dev/null || true
 
 # 2. Copiamos script de arranque estructurado
 RUN mkdir -p /root/admin/portfolio
-COPY ./admin/start.sh /root/admin/portfolio/start.sh
+COPY ./dockerfiles/05_portfolio/admin/start.sh /root/admin/portfolio/start.sh
 RUN chmod +x /root/admin/portfolio/start.sh
 
 EXPOSE 80 22

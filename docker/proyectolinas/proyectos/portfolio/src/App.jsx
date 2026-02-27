@@ -25,14 +25,14 @@ function App() {
         {/* PROYECTO 1: TARKOV */}
         <div className="card">
           <div>
-            <span className="badge blue">PUERTO 1987</span>
+            <span className="badge blue">PUERTO 3000</span>
             <h2>🔫 Tarkov Web</h2>
             <p>
               Aplicación web compleja desplegada sobre arquitectura de 4 capas. 
               Frontend React + Vite servido sobre Nginx.
             </p>
           </div>
-          <a href={`http://${host}:1987`} target="_blank" className="btn-link">
+          <a href={`http://${host}:3000`} target="_blank" className="btn-link">
             Abrir Proyecto ↗
           </a>
         </div>
@@ -40,14 +40,13 @@ function App() {
         {/* PROYECTO 2: DATABASE */}
         <div className="card">
           <div>
-            <span className="badge">PUERTO 1990</span>
+            <span className="badge">PUERTO 5432</span>
             <h2>🗄️ Database</h2>
             <p>
-              Gestión de base de datos MariaDB a través de phpMyAdmin. 
-              Red interna protegida con Docker.
+              En este se debe conectarse desde la base de mysql.
             </p>
           </div>
-          <a href={`http://${host}:1990`} target="_blank" className="btn-link">
+          <a href={`http://${host}:5432`} target="_blank" className="btn-link">
             Abrir Panel ↗
           </a>
         </div>
@@ -55,7 +54,7 @@ function App() {
         {/* PROYECTO 3: PORTAFOLIO */}
         <div className="card">
           <div>
-            <span className="badge blue">PUERTO 1974</span>
+            <span className="badge blue">PUERTO 5000</span>
             <h2>🎨 Portafolio</h2>
             <p>
               Estás aquí. Una SPA (Single Page Application) moderna, responsive 
