@@ -3,8 +3,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install
 
 WORKDIR /app/tarkov
 COPY proyectos/tarkov-web/package*.json ./
-# Instalamos aquí para que 'vite' ya exista en la imagen
-RUN npm install 
 
 COPY proyectos/tarkov-web .
 

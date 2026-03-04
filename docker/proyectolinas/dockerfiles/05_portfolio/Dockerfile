@@ -2,7 +2,6 @@ FROM mortviva7/ubreact:latest
 
 WORKDIR /app/portfolio
 COPY proyectos/portfolio/package*.json ./
-RUN npm install 
 
 COPY proyectos/portfolio .
 
