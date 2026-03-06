@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  ctl_nest:
+    container_name: ctl_nest
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/07_nest/Dockerfile
+    ports:
+      - "${PORT_NEST}:${PORT_NEST}"
+      - "${PORT_SSH}:22"
+    environment:
+      # Pasamos las variables al contenedor para que NestJS las lea
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+    env_file:
+      - .env
+    networks:
+      - red-linas
+    depends_on:
+      - ctl_postgre
+    volumes:
+      - ${CONTEXTO}/proyectos/api-nest:/app/api
+
+networks:
+  red-linas:
+    external: true

@@ -1,30 +1,27 @@
 #!/bin/bash
 
-echo "[POSTGRE] Ejecutando capa anterior..."
-# Ejecutamos el script de la capa 02 (Ciberseguridad) en segundo plano
-/root/admin/ciber/start.sh &
+# 1. EJECUTAMOS LA CAPA ANTERIOR (Ciberseguridad)
+if [ -f /root/admin/ciber/start.sh ]; then
+    bash /root/admin/ciber/start.sh &
+else
+    echo "[POSTGRE] Error: No se encontró la capa de ciberseguridad."
+fi
 
-# Le damos 3 segunditos para que la capa anterior respire
-sleep 3
-
-echo "[POSTGRE] Configurando el Modo Paranoico (Abriendo puertos)..."
-# 1. Le decimos a Postgres que escuche en todas las IPs, no solo en localhost
-sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/*/main/postgresql.conf
-
-# 2. Le decimos que acepte conexiones desde fuera (0.0.0.0/0) pidiendo contraseña (md5)
-echo "host    all             all             0.0.0.0/0               md5" >> /etc/postgresql/*/main/pg_hba.conf
-
-echo "[POSTGRE] Iniciando servicio..."
+# 2. CONFIGURACIÓN DE POSTGRESQL
+echo "[POSTGRE] Iniciando PostgreSQL..."
 service postgresql start
 
-echo "[POSTGRE] Asegurando credenciales y creando BD..."
-# Le ponemos la contraseña 'admin123' al usuario postgres
-su - postgres -c "psql -c \"ALTER USER postgres PASSWORD 'admin123';\""
+# Esperar a que el servicio arranque del todo
+sleep 5
 
-# Creamos la base de datos 'nestasir' SOLO si no existe ya
-su - postgres -c "psql -tc \"SELECT 1 FROM pg_database WHERE datname = 'nestasir'\" | grep -q 1 || createdb nestasir"
+# 3. CREACIÓN DE USUARIO Y BASE DE DATOS (Lo que pide el profesor para nota)
+# Usamos el usuario 'postgres' del sistema para crear tu usuario personalizado
+echo "[POSTGRE] Configurando base de datos y usuario..."
+sudo -u postgres psql -c "CREATE USER nestasir WITH PASSWORD 'admin123';"
+sudo -u postgres psql -c "ALTER USER nestasir WITH SUPERUSER;"
+sudo -u postgres psql -c "CREATE DATABASE nestasir OWNER nestasir;"
 
-echo "=== BASE DE DATOS LISTA Y FUNCIONANDO ==="
+echo "[POSTGRE] Base de datos 'nestasir' creada con éxito."
 
-# Mantenemos el contenedor vivo
-tail -f /dev/null
+# Mantenemos el contenedor vivo y mostramos logs
+tail -f /var/log/postgresql/postgresql-16-main.log
