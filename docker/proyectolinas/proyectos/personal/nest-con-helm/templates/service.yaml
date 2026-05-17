@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-nestapi
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: nestapi
+    release: {{ .Release.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.nestapi.service.port }}
+      targetPort: {{ .Values.nestapi.service.port }}
+  type: {{ .Values.nestapi.service.type }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-postgre
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: postgre
+    release: {{ .Release.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.postgre.service.port }}
+      targetPort: {{ .Values.postgre.service.port }}
+  type: {{ .Values.postgre.service.type }}

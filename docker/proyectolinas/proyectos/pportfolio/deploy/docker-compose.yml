@@ -3,14 +3,15 @@ version: '3.8'
 services:
   portfolio:
     image: mortviva7/ubportfolio:latest 
-    container_name: ctl_portfolio
+    container_name: ctl_portfolio_final
     build:
       context: ${CONTEXTO}
       dockerfile: ./dockerfiles/05_portfolio/Dockerfile
     ports:
-      - "5000:5000"
-      - "1974:80"
-      - "3463:22"
+      - "3011:5000"  # Primera entrada (la que querías)
+      - "3012:5000"  # SEGUNDA ENTRADA (ahora tienes dos puertos para lo mismo)
+      - "8811:80"    # Nginx
+      - "45679:22"   # SSH
     env_file:
       - .env
     volumes:

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  ctl_nextjs:
+    container_name: ctl_nextjs
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/09_nextjs/Dockerfile
+    image: mortviva7/ubnextjs:latest
+    ports:
+      - "${PORT_NEXT_HOST}:3002"
+      - "${PORT_SSH}:22"
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    env_file:
+      - .env
+    volumes:
+      - ${CONTEXTO}/proyectos/next-app:/app/next
+      - ./logs:/root/logs
+    networks:
+      - red_proyectolinas
+
+networks:
+  red_proyectolinas:
+    external: true

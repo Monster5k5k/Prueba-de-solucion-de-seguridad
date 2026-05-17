@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-nextjs
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: nextjs-tarkov
+    release: {{ .Release.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.nextjs.service.port }}
+      targetPort: {{ .Values.nextjs.service.port }}
+  type: {{ .Values.nextjs.service.type }}

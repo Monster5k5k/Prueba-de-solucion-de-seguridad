@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  ctl_nginxapi:
+    container_name: ctl_nginxapi
+    build:
+      context: ${CONTEXTO}
+      dockerfile: ./dockerfiles/08_nginxapi/Dockerfile
+    image: mortviva7/ubnginxapi:latest
+    ports:
+      - "${PORT_SSH}:22"
+      - "${PORT_WWW}:80"
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      - red_proyectolinas
+
+networks:
+  red_proyectolinas:
+    external: true

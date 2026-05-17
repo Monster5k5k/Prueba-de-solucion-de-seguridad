@@ -2,12 +2,19 @@ services:
   web:
     build:
       context: ${CONTEXTO}
-      dockerfile: ./dockerfiles/02_ciber/Dockerfile
-    container_name: ctl_ciber
-    image: mortviva7/ubciber
+      dockerfile: ./dockerfiles/03_ngnix/Dockerfile
+    container_name: ctl_nginx
+    image: mortviva7/ubnginx
     ports:
-      - 3457:22
+      - "${PORT_SSH}:22"
+      - "${PORT_WWW}:80"
     env_file:
       - ./.env
     volumes:
       - ./logs:/root/logs
+    networks:
+      - red_proyectolinas
+
+networks:
+  red_proyectolinas:
+    external: true

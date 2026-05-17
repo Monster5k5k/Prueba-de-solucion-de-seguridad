@@ -1,0 +1,164 @@
+=== AUDIT Sun May 17 21:36:48 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:37:18 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:37:48 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:38:18 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:38:48 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:39:18 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53875      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:42239      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:39:31 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:60285      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:45277      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3))
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4))
+
+=== AUDIT Sun May 17 21:40:01 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:60285      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:45277      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:40:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3))
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4))
+
+=== AUDIT Sun May 17 21:40:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:41:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:41:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:42:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:42:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:43:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:43:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:44:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:44:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:45:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:45:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:46:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:46:42 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+
+=== AUDIT Sun May 17 21:47:12 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                       
+udp   UNCONN 0      0         127.0.0.11:37353      0.0.0.0:*                                 
+tcp   LISTEN 0      4096      127.0.0.11:35329      0.0.0.0:*                                 
+tcp   LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=50,fd=4))
+tcp   LISTEN 0      128          0.0.0.0:3456       0.0.0.0:*    users:(("sshd",pid=29,fd=3)) 
+tcp   LISTEN 0      128             [::]:3456          [::]:*    users:(("sshd",pid=29,fd=4)) 
+

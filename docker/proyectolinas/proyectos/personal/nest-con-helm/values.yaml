@@ -1,0 +1,33 @@
+replicaCount: 1
+
+nestapi:
+  image:
+    repository: mortviva7/ubnest
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 3001
+  env:
+    DB_PORT: "5432"
+    PORT: "3001"
+
+postgre:
+  image:
+    repository: mortviva7/ubpostgre
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 5432
+  persistence:
+    storageSize: 1Gi
+  credentials:
+    user: nestasir
+    password: admin123
+    database: nestasir
+
+ingress:
+  enabled: true
+  className: nginx
+  host: api.linas.local

@@ -1,0 +1,12 @@
+apiVersion: v2
+name: tarkov-helm
+description: Helm chart para desplegar la app Next.js Tarkov de Linas en Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - nextjs
+  - tarkov
+  - frontend
+maintainers:
+  - name: Linas

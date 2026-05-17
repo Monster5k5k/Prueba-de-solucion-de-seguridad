@@ -6,8 +6,17 @@ services:
     container_name: ctl_ciber
     image: mortviva7/ubciber
     ports:
-      - 3457:22
+      - "3457:22"
     env_file:
       - ./.env
     volumes:
       - ./logs:/root/logs
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    networks:
+      - red_proyectolinas
+
+networks:
+  red_proyectolinas:
+    external: true

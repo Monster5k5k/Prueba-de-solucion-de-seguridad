@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-nestapi
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: nestapi
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: nestapi
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: nestapi
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: nestapi
+          image: "{{ .Values.nestapi.image.repository }}:{{ .Values.nestapi.image.tag }}"
+          imagePullPolicy: {{ .Values.nestapi.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.nestapi.service.port }}
+          env:
+            - name: DB_HOST
+              value: "{{ .Release.Name }}-postgre"
+            - name: DB_PORT
+              value: "{{ .Values.nestapi.env.DB_PORT }}"
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secret
+                  key: POSTGRES_DB
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secret
+                  key: POSTGRES_USER
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secret
+                  key: POSTGRES_PASSWORD
+            - name: PORT
+              value: "{{ .Values.nestapi.env.PORT }}"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-postgre
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: postgre
+    release: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgre
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: postgre
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: postgre
+          image: "{{ .Values.postgre.image.repository }}:{{ .Values.postgre.image.tag }}"
+          imagePullPolicy: {{ .Values.postgre.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.postgre.service.port }}
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-secret
+          volumeMounts:
+            - name: postgre-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgre-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc

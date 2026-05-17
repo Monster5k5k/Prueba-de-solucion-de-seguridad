@@ -1,0 +1,142 @@
+=== AUDIT Sun May 17 21:37:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:37:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*          
+
+=== AUDIT Sun May 17 21:38:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*          
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*          
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+
+=== AUDIT Sun May 17 21:38:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:39:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:39:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:40:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:40:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:41:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:41:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:42:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:42:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:43:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:43:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:44:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:44:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:45:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:45:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:46:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:46:38 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+
+=== AUDIT Sun May 17 21:47:08 UTC 2026 ===
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                        
+udp   UNCONN 0      0         127.0.0.11:53677      0.0.0.0:*                                  
+tcp   LISTEN 0      4096      127.0.0.11:45249      0.0.0.0:*                                  
+tcp   LISTEN 0      511          0.0.0.0:3000       0.0.0.0:*    users:(("node",pid=109,fd=25))
+tcp   LISTEN 0      511          0.0.0.0:3002       0.0.0.0:*    users:(("next-server (v1",pid=163,fd=19))
+

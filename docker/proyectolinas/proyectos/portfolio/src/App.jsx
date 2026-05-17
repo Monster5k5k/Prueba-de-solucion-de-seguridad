@@ -37,17 +37,18 @@ function App() {
           </a>
         </div>
 
-        {/* PROYECTO 2: DATABASE */}
+        {/* PROYECTO 2: API NESTJS */}
         <div className="card">
           <div>
-            <span className="badge">PUERTO 5432</span>
-            <h2>🗄️ Database</h2>
+            <span className="badge">PUERTO 3001</span>
+            <h2>⚙️ API NestJS</h2>
             <p>
-              En este se debe conectarse desde la base de mysql.
+              API REST con NestJS + PostgreSQL. Módulos: usuarios, películas,
+              pokemon, libros e items de Tarkov.
             </p>
           </div>
-          <a href={`http://${host}:5432`} target="_blank" className="btn-link">
-            Abrir Panel ↗
+          <a href={`http://${host}:3001`} target="_blank" className="btn-link">
+            Abrir API ↗
           </a>
         </div>
 

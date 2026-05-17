@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-nextjs
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: nextjs-tarkov
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: nextjs-tarkov
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: nextjs-tarkov
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: nextjs-tarkov
+          image: "{{ .Values.nextjs.image.repository }}:{{ .Values.nextjs.image.tag }}"
+          imagePullPolicy: {{ .Values.nextjs.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.nextjs.service.port }}
+          env:
+            - name: NEXT_PUBLIC_API_URL
+              value: "{{ .Values.nextjs.env.NEXT_PUBLIC_API_URL }}"

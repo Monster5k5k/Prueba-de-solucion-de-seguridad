@@ -1,18 +1,18 @@
 version: "3.8"
 
 services:
-  # SERVICIO WEB (REACT + NGINX)
   tarkov-web:
     image: mortviva7/ubreact:latest
-    container_name: ctl_react
+    container_name: ctl_react_personal
     build:
       context: ${CONTEXTO}
       dockerfile: ./dockerfiles/04_react/Dockerfile
     env_file: .env
     ports:
-      - "3000:3000"  # Puerto para la App Vite
-      - "1987:80"    # Puerto para Nginx (Producción)
-      - "3462:22"    # SSH puerto único para evitar conflictos
+      - "3010:3000"  # Primera entrada 
+      - "3015:3000"  # SEGUNDA ENTRADA adicional
+      - "8810:80"    # Nginx
+      - "45678:22"   # SSH
     volumes:
       - ./logs:/root/logs
     networks:

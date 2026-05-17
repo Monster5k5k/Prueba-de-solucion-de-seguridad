@@ -1,5 +1,8 @@
 # Heredar de tu imagen 02_ciber
-FROM mortviva7/ubciber 
+FROM mortviva7/ubciber
+
+# Instalar Nginx
+RUN apt-get update && apt-get install -y nginx && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /root/admin/nginx
 COPY ./dockerfiles/03_ngnix/admin/start.sh /root/admin/nginx/start.sh

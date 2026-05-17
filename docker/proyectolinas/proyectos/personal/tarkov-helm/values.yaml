@@ -1,0 +1,17 @@
+replicaCount: 1
+
+nextjs:
+  image:
+    repository: mortviva7/ubnextjs
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 3002
+  env:
+    NEXT_PUBLIC_API_URL: "http://nestapi-service:3001"
+
+ingress:
+  enabled: true
+  className: nginx
+  host: tarkov.linas.local
