@@ -5,7 +5,9 @@ import {
   UploadedFile,
   UseGuards,
   BadRequestException,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
@@ -51,12 +53,13 @@ export class UploadController {
       limits: { fileSize: 5 * 1024 * 1024 }, // Máximo 5MB
     }),
   )
-  uploadImagen(@UploadedFile() file: Express.Multer.File) {
+  uploadImagen(@UploadedFile() file: Express.Multer.File, @Req() req: Request) {
     if (!file) throw new BadRequestException('No se recibió ningún archivo');
 
-    // Devuelve la URL pública de la imagen subida
+    const host = req.get('host');
+    const protocol = req.protocol;
     return {
-      url: `http://localhost:3001/uploads/${file.filename}`,
+      url: `${protocol}://${host}/uploads/${file.filename}`,
       filename: file.filename,
     };
   }
