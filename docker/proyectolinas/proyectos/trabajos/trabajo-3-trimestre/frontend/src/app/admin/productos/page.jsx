@@ -7,27 +7,18 @@ import { getToken, isAdmin, isLoggedIn } from '@/lib/auth';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
-interface Producto {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  imagen: string;
-  stock: number;
-}
-
 const EMPTY_FORM = { nombre: '', descripcion: '', precio: '', stock: '' };
 
 export default function AdminProductosPage() {
   const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [productos, setProductos] = useState<Producto[]>([]);
+  const fileInputRef = useRef(null);
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [form, setForm] = useState(EMPTY_FORM);
-  const [imagenUrl, setImagenUrl] = useState('');       // URL final que se guarda
-  const [imagenPreview, setImagenPreview] = useState(''); // Preview en el formulario
+  const [imagenUrl, setImagenUrl] = useState('');
+  const [imagenPreview, setImagenPreview] = useState('');
   const [subiendoImagen, setSubiendoImagen] = useState(false);
-  const [editId, setEditId] = useState<number | null>(null);
+  const [editId, setEditId] = useState(null);
   const [error, setError] = useState('');
   const [exito, setExito] = useState('');
 
@@ -50,18 +41,16 @@ export default function AdminProductosPage() {
     }
   }
 
-  // Sube la imagen al backend y guarda la URL devuelta
-  async function handleImagenChange(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleImagenChange(e) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Preview local inmediato
     setImagenPreview(URL.createObjectURL(file));
     setSubiendoImagen(true);
     setError('');
 
     try {
-      const token = getToken()!;
+      const token = getToken();
       const formData = new FormData();
       formData.append('file', file);
 
@@ -77,8 +66,8 @@ export default function AdminProductosPage() {
       }
 
       const data = await res.json();
-      setImagenUrl(data.url); // URL pública devuelta por el backend
-    } catch (err: any) {
+      setImagenUrl(data.url);
+    } catch (err) {
       setError(err.message || 'Error al subir la imagen');
       setImagenPreview('');
     } finally {
@@ -86,7 +75,7 @@ export default function AdminProductosPage() {
     }
   }
 
-  function handleEditar(producto: Producto) {
+  function handleEditar(producto) {
     setEditId(producto.id);
     setForm({
       nombre: producto.nombre,
@@ -110,11 +99,11 @@ export default function AdminProductosPage() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError('');
     setExito('');
-    const token = getToken()!;
+    const token = getToken();
 
     const datos = {
       nombre: form.nombre,
@@ -134,31 +123,30 @@ export default function AdminProductosPage() {
       }
       handleCancelar();
       cargarProductos();
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Error al guardar el producto');
     }
   }
 
-  async function handleEliminar(id: number, nombre: string) {
+  async function handleEliminar(id, nombre) {
     if (!confirm(`¿Eliminar el producto "${nombre}"?`)) return;
-    const token = getToken()!;
+    const token = getToken();
     try {
       await productosApi.remove(id, token);
       setProductos(productos.filter((p) => p.id !== id));
       setExito(`Producto "${nombre}" eliminado`);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     }
   }
 
-  // Actualiza el stock directamente desde la tabla sin abrir el formulario
-  async function handleStockRapido(id: number, nuevoStock: number) {
+  async function handleStockRapido(id, nuevoStock) {
     if (nuevoStock < 0) return;
-    const token = getToken()!;
+    const token = getToken();
     try {
       await productosApi.update(id, { stock: nuevoStock }, token);
       setProductos(productos.map((p) => p.id === id ? { ...p, stock: nuevoStock } : p));
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     }
   }
@@ -171,7 +159,6 @@ export default function AdminProductosPage() {
     <div>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Gestión de Productos</h1>
 
-      {/* Formulario */}
       <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
         <h2 className="text-lg font-bold text-gray-700 mb-4">
           {editId !== null ? `Editando producto #${editId}` : 'Nuevo Producto'}
@@ -218,7 +205,6 @@ export default function AdminProductosPage() {
             />
           </div>
 
-          {/* Subida de imagen */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Imagen</label>
             <input
@@ -231,7 +217,6 @@ export default function AdminProductosPage() {
             {subiendoImagen && (
               <p className="text-xs text-blue-500 mt-1">Subiendo imagen...</p>
             )}
-            {/* Preview de la imagen seleccionada */}
             {imagenPreview && !subiendoImagen && (
               <img
                 src={imagenPreview}
@@ -272,7 +257,6 @@ export default function AdminProductosPage() {
         </form>
       </div>
 
-      {/* Tabla de productos */}
       <div className="bg-white rounded-2xl shadow-md overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
