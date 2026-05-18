@@ -19,6 +19,7 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
       - FRONTEND_URL=${FRONTEND_URL}
+      - BACKEND_URL=${BACKEND_URL}
       - PORT=3007
     env_file:
       - .env
