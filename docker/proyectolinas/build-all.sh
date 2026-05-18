@@ -61,6 +61,12 @@ build_and_push "mortviva7/ubnginxapi" "$PROYECTOS/pnginxapi/deploy"
 # --- CAPA 9: Next.js (viene de ubreact) ---
 build_and_push "mortviva7/ubnextjs" "$PROYECTOS/pnextjs/deploy"
 
+# --- CAPA 10: Tienda Backend (viene de ubreact) ---
+build_and_push "mortviva7/ubtiendaback" "$PROYECTOS/ptiendaback/deploy"
+
+# --- CAPA 11: Tienda Frontend (viene de ubreact) ---
+build_and_push "mortviva7/ubtiendafront" "$PROYECTOS/ptiendafront/deploy"
+
 echo ""
 echo "=================================================="
 ok "TODAS LAS IMAGENES CONSTRUIDAS Y SUBIDAS"
@@ -76,3 +82,5 @@ echo "  - mortviva7/ubportfolio"
 echo "  - mortviva7/ubnest"
 echo "  - mortviva7/ubnginxapi"
 echo "  - mortviva7/ubnextjs"
+echo "  - mortviva7/ubtiendaback"
+echo "  - mortviva7/ubtiendafront"

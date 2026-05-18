@@ -3,6 +3,8 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
+import { DataSource } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -13,9 +15,10 @@ async function bootstrap() {
 
   // Habilitar CORS para que el frontend Next.js pueda comunicarse con la API
   app.enableCors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   });
 
   // Validación global de DTOs con class-validator
@@ -37,6 +40,25 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document); // Swagger en http://localhost:3001/api
+
+  // Seed: crear usuario admin si no existe
+  try {
+    const dataSource = app.get(DataSource);
+    const existing = await dataSource.query(
+      'SELECT id FROM usuarios WHERE email = $1',
+      ['admin@linas.com'],
+    );
+    if (existing.length === 0) {
+      const hash = await bcrypt.hash('Admin123', 10);
+      await dataSource.query(
+        'INSERT INTO usuarios (nombre, email, password, perfil, "createdAt") VALUES ($1, $2, $3, $4, NOW())',
+        ['Admin', 'admin@linas.com', hash, 'admin'],
+      );
+      console.log('Seed: admin@linas.com creado con contraseña Admin123');
+    }
+  } catch (e) {
+    console.warn('Seed skipped:', e.message);
+  }
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
