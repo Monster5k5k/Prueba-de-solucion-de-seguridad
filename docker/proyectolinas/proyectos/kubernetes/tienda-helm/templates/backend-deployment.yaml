@@ -18,6 +18,9 @@ spec:
           image: {{ .Values.backend.image }}
           ports:
             - containerPort: {{ .Values.backend.port }}
+          volumeMounts:
+            - name: uploads
+              mountPath: /app/tienda-back/uploads
           env:
             - name: PORT
               value: "{{ .Values.backend.port }}"
@@ -48,3 +51,7 @@ spec:
               value: http://62.169.21.120:{{ .Values.backend.nodePort }}
             - name: FRONTEND_URL
               value: http://62.169.21.120:{{ .Values.frontend.nodePort }}
+      volumes:
+        - name: uploads
+          persistentVolumeClaim:
+            claimName: backend-uploads-pvc

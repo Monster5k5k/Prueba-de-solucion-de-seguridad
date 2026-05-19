@@ -13,6 +13,7 @@ backend:
   nodePort: 30007
   jwtSecret: linas_jwt_secreto_3trimestre_2026
   jwtExpiresIn: 7d
+  uploadsSize: 2Gi
 
 frontend:
   image: mortviva7/ubtiendafront:latest
