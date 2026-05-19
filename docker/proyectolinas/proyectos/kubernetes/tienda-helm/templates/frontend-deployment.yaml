@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tienda-frontend
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tienda-frontend
+  template:
+    metadata:
+      labels:
+        app: tienda-frontend
+    spec:
+      containers:
+        - name: tienda-frontend
+          image: {{ .Values.frontend.image }}
+          ports:
+            - containerPort: {{ .Values.frontend.port }}
+          env:
+            - name: NEXT_PUBLIC_API_URL
+              value: {{ .Values.frontend.apiUrl }}

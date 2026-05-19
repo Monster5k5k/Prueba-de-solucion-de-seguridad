@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tienda-backend
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: tienda-backend
+  ports:
+    - port: {{ .Values.backend.port }}
+      targetPort: {{ .Values.backend.port }}
+      nodePort: {{ .Values.backend.nodePort }}
+  type: NodePort

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tienda-backend
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tienda-backend
+  template:
+    metadata:
+      labels:
+        app: tienda-backend
+    spec:
+      containers:
+        - name: tienda-backend
+          image: {{ .Values.backend.image }}
+          ports:
+            - containerPort: {{ .Values.backend.port }}
+          env:
+            - name: PORT
+              value: "{{ .Values.backend.port }}"
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_DB
+            - name: JWT_SECRET
+              value: {{ .Values.backend.jwtSecret }}
+            - name: JWT_EXPIRES_IN
+              value: {{ .Values.backend.jwtExpiresIn }}
+            - name: BACKEND_URL
+              value: http://62.169.21.120:{{ .Values.backend.nodePort }}
+            - name: FRONTEND_URL
+              value: http://62.169.21.120:{{ .Values.frontend.nodePort }}
