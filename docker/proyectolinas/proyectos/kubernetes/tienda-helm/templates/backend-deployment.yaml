@@ -4,7 +4,7 @@ metadata:
   name: tienda-backend
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
       app: tienda-backend

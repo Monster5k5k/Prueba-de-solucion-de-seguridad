@@ -2,6 +2,7 @@ namespace: tienda-online
 
 postgres:
   image: mortviva7/ubpostgre:latest
+  replicas: 1  # PostgreSQL no escala horizontalmente sin configuración especial
   user: tienda
   password: tienda123
   database: tienda_online
@@ -9,6 +10,7 @@ postgres:
 
 backend:
   image: mortviva7/ubtiendaback:latest
+  replicas: 2
   port: 3007
   nodePort: 30007
   jwtSecret: linas_jwt_secreto_3trimestre_2026
@@ -17,6 +19,7 @@ backend:
 
 frontend:
   image: mortviva7/ubtiendafront:latest
+  replicas: 2
   port: 3008
   nodePort: 30008
   # URL que el NAVEGADOR usa para llamar al backend (IP pública del VPS)
